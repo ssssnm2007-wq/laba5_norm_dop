@@ -1,0 +1,526 @@
+/* ============================================================
+   БАЗОВЫЕ СТИЛИ (сброс отступов и настройка шрифта)
+   ============================================================ */
+* {
+    margin: 0;              /* убираем внешние отступы у всех элементов */
+    padding: 0;             /* убираем внутренние отступы у всех элементов */
+    box-sizing: border-box; /* ширина/высота включают padding и border — удобно для вёрстки */
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif; /* основной шрифт сайта */
+    color: #2E4A2E;         /* тёмно-зелёный цвет текста (из палитры) */
+    background: #FCECD8;    /* тёплый бежевый фон страницы */
+    line-height: 1.6;       /* межстрочный интервал для читаемости */
+}
+
+/* ============================================================
+   HERO (Первый экран)
+   ============================================================ */
+.hero {
+    display: grid;                          /* сетка из двух колонок: текст + фото */
+    grid-template-columns: 1.1fr 1fr;       /* левая колонка чуть шире правой */
+    align-items: center;                    /* выравнивание по вертикали по центру */
+    gap: 40px;                              /* расстояние между колонками */
+
+    min-height: 90vh;                       /* высота минимум 90% от высоты экрана */
+    padding: 60px 8vw;                      /* отступы: 60px сверху/снизу, 8% от ширины экрана по бокам */
+
+    /* Градиент из тёмно-зелёного и оливкового — создаёт глубину */
+    background: linear-gradient(135deg, #2E4A2E 0%, #4A6B3A 100%);
+    color: #FCECD8;                         /* бежевый цвет текста на тёмном фоне */
+}
+
+/* Надзаголовок (маленький текст над H1) */
+.hero__eyebrow {
+    display: inline-block;      /* чтобы можно было задать отступы */
+    font-size: 0.85rem;         /* маленький размер шрифта */
+    letter-spacing: 0.12em;     /* разреженные буквы — стильный акцент */
+    text-transform: uppercase;  /* все буквы заглавные */
+    color: #91AC67;             /* оливковый акцент (из палитры) */
+    margin-bottom: 16px;        /* отступ снизу до заголовка */
+}
+
+/* Главный заголовок H1 */
+.hero__title {
+    font-size: clamp(2rem, 4vw, 3.2rem); /* адаптивный размер: от 2rem до 3.2rem в зависимости от ширины экрана */
+    line-height: 1.15;                   /* плотный межстрочный интервал для крупного текста */
+    margin-bottom: 18px;                 /* отступ снизу */
+    font-weight: 700;                    /* жирное начертание */
+    color: #FCECD8;                      /* бежевый цвет */
+}
+
+/* Подзаголовок H2 */
+.hero__subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.4rem); /* адаптивный размер */
+    font-weight: 400;                       /* обычное начертание */
+    color: #D4E0C8;                         /* светло-оливковый оттенок */
+    margin-bottom: 20px;                    /* отступ снизу */
+}
+
+/* Основной текст описания */
+.hero__text {
+    max-width: 560px;       /* ограничиваем ширину текста для удобства чтения */
+    color: #C8D4B8;         /* приглушённый светлый оттенок */
+    margin-bottom: 32px;    /* отступ снизу до кнопок */
+}
+
+/* Контейнер для кнопок */
+.hero__actions {
+    display: flex;          /* выстраиваем кнопки в ряд */
+    flex-wrap: wrap;        /* разрешаем перенос на новую строку на узких экранах */
+    gap: 16px;              /* расстояние между кнопками */
+}
+
+/* Общие стили для всех кнопок */
+.btn {
+    display: inline-block;  /* чтобы padding работал корректно */
+    padding: 14px 26px;     /* внутренние отступы: 14px сверху/снизу, 26px по бокам */
+    border-radius: 8px;     /* скруглённые углы */
+    font-weight: 600;       /* полужирный текст */
+    text-decoration: none;  /* убираем подчёркивание у ссылок */
+    transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease; /* плавные анимации */
+}
+
+/* Основная кнопка (CTA) */
+.btn--primary {
+    background: #FCECD8;    /* бежевый фон */
+    color: #2E4A2E;         /* тёмно-зелёный текст */
+}
+
+/* Эффект при наведении на основную кнопку */
+.btn--primary:hover {
+    background: #ffffff;    /* белый фон при наведении */
+    transform: translateY(-2px); /* лёгкий подъём вверх — эффект «оживления» */
+}
+
+/* Второстепенная кнопка (прозрачная с обводкой) */
+.btn--ghost {
+    border: 1px solid rgba(252, 236, 216, 0.5); /* полупрозрачная бежевая рамка */
+    color: #FCECD8;                             /* бежевый текст */
+}
+
+/* Эффект при наведении на второстепенную кнопку */
+.btn--ghost:hover {
+    background: rgba(252, 236, 216, 0.1); /* лёгкая бежевая подсветка фона */
+    transform: translateY(-2px);          /* лёгкий подъём вверх */
+}
+
+/* Блок с фотографией */
+.hero__media {
+    justify-self: end;      /* прижимаем фото к правому краю колонки */
+    width: 100%;            /* блок занимает всю доступную ширину */
+    max-width: 460px;       /* но не более 460px */
+}
+
+/* Само изображение */
+.hero__image {
+    width: 100%;            /* изображение растягивается по ширине блока */
+    height: auto;           /* высота подстраивается автоматически */
+    display: block;         /* убирает лишние отступы снизу */
+    border-radius: 16px;    /* скруглённые углы */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35); /* глубокая тень — фото «парит» */
+    object-fit: cover;      /* изображение заполняет область без искажений */
+    border: 4px solid #91AC67; /* оливковая рамка для стиля */
+}
+
+/* Адаптив для планшетов и телефонов (ширина экрана до 860px) */
+@media (max-width: 860px) {
+    .hero {
+        grid-template-columns: 1fr; /* одна колонка вместо двух */
+        text-align: center;         /* текст по центру */
+        padding: 48px 6vw;          /* уменьшаем отступы */
+    }
+
+    .hero__media {
+        justify-self: center;   /* фото по центру */
+        order: -1;              /* фото перемещается наверх (перед текстом) */
+        max-width: 340px;       /* уменьшаем максимальную ширину фото */
+    }
+
+    .hero__actions {
+        justify-content: center; /* кнопки по центру */
+    }
+}
+
+/* ============================================================
+   МОДАЛЬНОЕ ОКНО (открывается через :target)
+   ============================================================ */
+.modal {
+    position: fixed;        /* фиксированное позиционирование относительно окна браузера */
+    inset: 0;               /* растягиваем на весь экран (top/right/bottom/left = 0) */
+    display: flex;          /* flexbox для центрирования содержимого */
+    align-items: center;    /* выравнивание по вертикали по центру */
+    justify-content: center; /* выравнивание по горизонтали по центру */
+    padding: 20px;          /* отступы по краям для мобильных устройств */
+
+    /* По умолчанию скрыто */
+    opacity: 0;             /* полностью прозрачно */
+    visibility: hidden;     /* невидимо и не кликабельно */
+    transition: opacity 0.25s ease, visibility 0.25s ease; /* плавное появление/исчезновение */
+    z-index: 100;           /* поверх всех остальных элементов */
+}
+
+/* Когда в адресе браузера есть #contact — показываем окно */
+.modal:target {
+    opacity: 1;             /* полностью непрозрачно */
+    visibility: visible;    /* видимо и кликабельно */
+}
+
+/* Затемняющий фон (overlay) */
+.modal__overlay {
+    position: absolute;     /* позиционируется относительно .modal */
+    inset: 0;               /* на весь экран */
+    background: rgba(46, 74, 46, 0.75); /* тёмно-зелёный с прозрачностью 75% */
+    backdrop-filter: blur(4px);         /* размытие фона под overlay — эффект стекла */
+}
+
+/* Само окно диалога */
+.modal__window {
+    position: relative;     /* чтобы z-index работал */
+    z-index: 1;             /* поверх overlay */
+
+    width: 100%;            /* занимает всю доступную ширину */
+    max-width: 420px;       /* но не более 420px */
+    background: #FCECD8;    /* бежевый фон */
+    color: #2E4A2E;         /* тёмно-зелёный текст */
+    border-radius: 16px;    /* скруглённые углы */
+    padding: 32px 28px;     /* внутренние отступы */
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4); /* глубокая тень */
+    border: 2px solid #6E3511; /* коричневая рамка (из палитры) */
+}
+
+/* Заголовок окна */
+.modal__title {
+    font-size: 1.5rem;      /* размер шрифта */
+    margin-bottom: 6px;     /* небольшой отступ снизу */
+    color: #6E3511;         /* коричневый цвет */
+}
+
+/* Подзаголовок окна */
+.modal__subtitle {
+    color: #4A6B3A;         /* оливковый оттенок */
+    margin-bottom: 20px;    /* отступ снизу до списка контактов */
+}
+
+/* Кнопка-крестик (закрытие) */
+.modal__close {
+    position: absolute;     /* позиционируется относительно .modal__window */
+    top: 12px;              /* отступ сверху */
+    right: 16px;            /* отступ справа */
+    font-size: 1.8rem;      /* крупный размер для удобного клика */
+    line-height: 1;         /* убираем лишнюю высоту строки */
+    color: #6E3511;         /* коричневый цвет */
+    text-decoration: none;  /* убираем подчёркивание */
+    transition: color 0.2s ease; /* плавная смена цвета */
+}
+
+/* Эффект при наведении на крестик */
+.modal__close:hover {
+    color: #2E4A2E;         /* тёмно-зелёный при наведении */
+}
+
+/* Список контактов */
+.contact-list {
+    list-style: none;       /* убираем маркеры списка */
+    margin-bottom: 24px;    /* отступ снизу до кнопки закрытия */
+}
+
+/* Один элемент списка контактов */
+.contact-list__item {
+    padding: 12px 0;        /* отступы сверху/снизу */
+    border-bottom: 1px solid #D4C4B0; /* светлая бежевая линия-разделитель */
+}
+
+/* У последнего элемента убираем нижнюю границу */
+.contact-list__item:last-child {
+    border-bottom: none;
+}
+
+/* Подпись контакта (например, «📧 Почта») */
+.contact-list__label {
+    display: block;         /* на отдельной строке */
+    font-size: 0.85rem;     /* маленький размер */
+    color: #6E3511;         /* коричневый цвет */
+    margin-bottom: 2px;     /* минимальный отступ снизу */
+}
+
+/* Значение контакта (ссылка) */
+.contact-list__value {
+    color: #2E4A2E;         /* тёмно-зелёный */
+    font-weight: 600;       /* полужирный */
+    text-decoration: none;  /* без подчёркивания */
+}
+
+/* Эффект при наведении на значение контакта */
+.contact-list__value:hover {
+    color: #91AC67;         /* оливковый при наведении */
+}
+
+/* Кнопка закрытия внутри модального окна */
+.modal__btn {
+    display: block;         /* блочный элемент — занимает всю ширину */
+    text-align: center;     /* текст по центру */
+}
+
+/* ============================================================
+   СЕКЦИЯ УСЛУГИ
+   ============================================================ */
+.services {
+    padding: 80px 8vw;      /* отступы: 80px сверху/снизу, 8% по бокам */
+    background: #FCECD8;    /* бежевый фон */
+    scroll-margin-top: 20px; /* отступ при прокрутке к якорю — чтобы заголовок не прилипал к краю */
+}
+
+/* Заголовок секции */
+.services__title {
+    font-size: clamp(1.6rem, 3vw, 2.2rem); /* адаптивный размер */
+    margin-bottom: 8px;                    /* небольшой отступ снизу */
+    color: #2E4A2E;                        /* тёмно-зелёный */
+}
+
+/* Подзаголовок секции */
+.services__subtitle {
+    color: #6E3511;         /* коричневый цвет */
+    margin-bottom: 36px;    /* отступ снизу до сетки карточек */
+}
+
+/* Сетка карточек услуг */
+.services__grid {
+    display: grid;          /* CSS Grid для раскладки */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* адаптивные колонки: минимум 260px, максимум 1fr */
+    gap: 24px;              /* расстояние между карточками */
+}
+
+/* Карточка услуги (неординарная: лёгкий наклон и тень) */
+.service-card {
+    background: #ffffff;    /* белый фон карточки */
+    border-radius: 14px;    /* скруглённые углы */
+    padding: 24px;          /* внутренние отступы */
+    box-shadow: 0 8px 24px rgba(46, 74, 46, 0.1); /* лёгкая тень */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* плавные анимации */
+    border-left: 6px solid #91AC67; /* оливковая полоса слева — акцент */
+    transform: rotate(-0.5deg);     /* лёгкий наклон влево для неординарности */
+}
+
+/* Чётные карточки наклоняем вправо — создаём ритм */
+.service-card:nth-child(even) {
+    transform: rotate(0.5deg);
+}
+
+/* Эффект при наведении на карточку */
+.service-card:hover {
+    transform: rotate(0deg) translateY(-4px); /* выпрямляется и приподнимается */
+    box-shadow: 0 14px 34px rgba(46, 74, 46, 0.15); /* тень становится глубже */
+}
+
+/* Бейдж (категория услуги) */
+.service-card__badge {
+    display: inline-block;  /* чтобы padding работал */
+    font-size: 0.75rem;     /* маленький размер */
+    text-transform: uppercase; /* заглавные буквы */
+    letter-spacing: 0.08em; /* разреженные буквы */
+    background: #D4E0C8;    /* светло-оливковый фон */
+    color: #2E4A2E;         /* тёмно-зелёный текст */
+    padding: 4px 10px;      /* внутренние отступы */
+    border-radius: 999px;   /* овальная форма (pill) */
+    margin-bottom: 14px;    /* отступ снизу */
+}
+
+/* Название услуги */
+.service-card__title {
+    font-size: 1.15rem;     /* размер шрифта */
+    margin-bottom: 10px;    /* отступ снизу */
+    color: #2E4A2E;         /* тёмно-зелёный */
+}
+
+/* Описание услуги */
+.service-card__text {
+    font-size: 0.95rem;     /* размер шрифта */
+    color: #4A6B3A;         /* оливковый оттенок */
+    margin-bottom: 16px;    /* отступ снизу до тегов */
+}
+
+/* Список тегов */
+.service-card__tags {
+    display: flex;          /* flexbox для выстраивания в ряд */
+    flex-wrap: wrap;        /* перенос на новую строку при необходимости */
+    gap: 8px;               /* расстояние между тегами */
+    list-style: none;       /* убираем маркеры списка */
+}
+
+/* Один тег */
+.service-card__tags li {
+    font-size: 0.75rem;     /* маленький размер */
+    background: #FCECD8;    /* бежевый фон */
+    color: #6E3511;         /* коричневый текст */
+    padding: 4px 10px;      /* внутренние отступы */
+    border-radius: 6px;     /* скруглённые углы */
+    border: 1px solid #D4C4B0; /* светлая бежевая рамка */
+}
+/* ============================================================
+   СЕКЦИЯ 3: МОИ ДОСТИЖЕНИЯ
+   Контрастная секция: тёмно-зелёный градиент (как в hero),
+   карточки — бежевые с оливковыми акцентами (палитра сайта)
+   ============================================================ */
+.achievements {
+    padding: 80px 8vw;
+    /* Тот же градиент, что в .hero — контраст с бежевым services */
+    background: linear-gradient(135deg, #2E4A2E 0%, #4A6B3A 100%);
+    color: #FCECD8;                 /* бежевый текст, как в hero */
+    scroll-margin-top: 20px;
+}
+
+/* Внутренний контейнер: 1140–1440px по заданию */
+.achievements__container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Заголовок секции */
+.achievements__title {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin-bottom: 8px;
+    color: #FCECD8;                 /* бежевый, как в hero */
+    text-align: center;
+}
+
+/* Подзаголовок секции */
+.achievements__subtitle {
+    color: #D4E0C8;                 /* светло-оливковый, как в hero */
+    margin-bottom: 40px;
+    text-align: center;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Flex-контейнер карточек */
+.achievements__grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 24px;
+}
+
+/* Карточка достижения */
+.achievement-card {
+    flex: 1 1 calc(25% - 24px);
+    min-width: 240px;
+    max-width: 340px;
+    display: flex;
+    flex-direction: column;
+    background: #FCECD8;            /* бежевый фон — палитра сайта */
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    border: 2px solid #91AC67;      /* оливковая рамка — акцент палитры */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.achievement-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+}
+
+/* Обёртка изображения */
+.achievement-card__media {
+    width: 100%;
+    background: #D4E0C8;            /* светло-оливковый фон под картинкой */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.achievement-card__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Обёртка текста */
+.achievement-card__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 24px 20px 28px;
+    flex: 1;
+}
+
+/* Заголовок карточки */
+.achievement-card__title {
+    font-size: 1.15rem;
+    color: #2E4A2E;                 /* тёмно-зелёный */
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+/* Текст карточки */
+.achievement-card__text {
+    font-size: 0.92rem;
+    color: #4A6B3A;                 /* оливковый */
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+/* Кнопка «Подробнее» */
+.achievement-card__btn {
+    display: inline-block;
+    padding: 10px 22px;
+    background: #6E3511;            /* коричневый — акцент из палитры (как рамка модалки) */
+    color: #FCECD8;                 /* бежевый текст */
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.achievement-card__btn:hover {
+    background: #2E4A2E;            /* тёмно-зелёный при наведении */
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   АДАПТИВ СЕКЦИИ ДОСТИЖЕНИЙ
+   ============================================================ */
+
+/* Планшеты: 3 в ряд */
+@media (max-width: 1100px) {
+    .achievement-card {
+        flex: 1 1 calc(33.333% - 24px);
+        max-width: none;
+    }
+}
+
+/* Планшеты поменьше: 2 в ряд */
+@media (max-width: 820px) {
+    .achievements {
+        padding: 60px 6vw;
+    }
+    .achievement-card {
+        flex: 1 1 calc(50% - 24px);
+    }
+}
+
+/* Мобильные: flex-direction: column (по заданию) */
+@media (max-width: 560px) {
+    .achievements__grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .achievement-card {
+        flex: 1 1 auto;
+        width: 100%;
+        max-width: 380px;
+    }
+    .achievement-card__image {
+        height: 180px;
+    }
+}

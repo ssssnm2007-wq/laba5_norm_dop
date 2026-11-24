@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Кодировка символов: чтобы русский текст отображался корректно -->
+    <meta charset="UTF-8">
+    <!-- Адаптивность для мобильных устройств: ширина = ширина экрана, начальный масштаб 1 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Заголовок вкладки браузера -->
+    <title>Наталья — тренер по конному спорту</title>
+    <!-- Подключение внешнего файла стилей -->
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+    <!-- ============================================================
+         СЕКЦИЯ 1: HERO (Первый экран)
+         ============================================================ -->
+    <section class="hero" id="hero">
+        <div class="hero__content">
+            <!-- Надзаголовок (eyebrow): маленький текст над главным заголовком -->
+            <p class="hero__eyebrow">Конный спорт • Тренер</p>
+
+            <!-- Главный заголовок H1: имя и профессиональная деятельность -->
+            <h1 class="hero__title">
+                Привет! Я Наталья —<br>
+                специалист по конному спорту
+            </h1>
+
+            <!-- Подзаголовок H2: краткое описание специализации -->
+            <h2 class="hero__subtitle">
+                Помогаю всадникам и лошадям найти общий язык
+            </h2>
+
+            <!-- Краткое приветствие/описание: 2 предложения об опыте и услугах -->
+            <p class="hero__text">
+                Провожу индивидуальные тренировки,
+                готовлю к соревнованиям и работаю с молодыми лошадьми. 
+                Индивидуальный подход к каждому всаднику и лошади.
+            </p>
+
+            <!-- Блок с кнопками (CTA + навигация) -->
+            <div class="hero__actions">
+                <!-- Кнопка CTA: открывает модальное окно связи через якорь #contact -->
+                <a href="#contact" class="btn btn--primary">
+                    Связаться со мной
+                </a>
+                <!-- Навигационная кнопка: плавный переход к секции услуг через якорь #services -->
+                <a href="#services" class="btn btn--ghost">
+                    Узнать об услугах ↓
+                </a>
+            </div>
+        </div>
+
+        <!-- Блок с фотографией -->
+        <div class="hero__media">
+            <!-- Изображение: замените src на путь к своему фото с лошадью -->
+            <img src="IMG.jpg" 
+                 alt="Наталья, специалист по конному спорту" 
+                 class="hero__image">
+        </div>
+    </section>
+
+    <!-- ============================================================
+         МОДАЛЬНОЕ ОКНО «СВЯЗАТЬСЯ СО МНОЙ»
+         Открывается по ссылке href="#contact", закрывается по #hero
+         ============================================================ -->
+    <div class="modal" id="contact">
+        <!-- Затемняющий фон (overlay). Клик по нему закрывает окно (ведёт на #hero) -->
+        <a href="#hero" class="modal__overlay" aria-label="Закрыть"></a>
+
+        <!-- Само окно диалога -->
+        <div class="modal__window" role="dialog" aria-labelledby="contact-title">
+            <!-- Кнопка-крестик для закрытия (ведёт на #hero) -->
+            <a href="#hero" class="modal__close" aria-label="Закрыть">×</a>
+
+            <!-- Заголовок модального окна -->
+            <h2 class="modal__title" id="contact-title">Связаться со мной</h2>
+            <!-- Подзаголовок-приглашение к диалогу -->
+            <p class="modal__subtitle">Давайте обсудим ваши цели и подберём программу тренировок:</p>
+
+            <!-- Список контактов -->
+            <ul class="contact-list">
+                <!-- Контакт: почта -->
+                <li class="contact-list__item">
+                    <span class="contact-list__label">📧 Почта</span>
+                    <a href="mailto:natalie@example.com" class="contact-list__value">
+                        natalie@example.com
+                    </a>
+                </li>
+                <!-- Контакт: телефон -->
+                <li class="contact-list__item">
+                    <span class="contact-list__label">📱 Телефон</span>
+                    <a href="tel:+375291234567" class="contact-list__value">
+                        +375 (29) 123-45-67
+                    </a>
+                </li>
+                <!-- Контакт: Telegram (открывается в новой вкладке) -->
+                <li class="contact-list__item">
+                    <span class="contact-list__label">✈️ Telegram</span>
+                    <a href="https://t.me/natalie_equine" class="contact-list__value" target="_blank" rel="noopener">
+                        @natalie_equine
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Кнопка закрытия окна (ведёт на #hero) -->
+            <a href="#hero" class="btn btn--primary modal__btn">Понятно, закрыть</a>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         СЕКЦИЯ 2: УСЛУГИ
+         ============================================================ -->
+    <section class="services" id="services">
+        <!-- Заголовок секции -->
+        <h2 class="services__title">Мои услуги</h2>
+        <!-- Подзаголовок секции -->
+        <p class="services__subtitle">Что я могу предложить вам и вашей лошади</p>
+
+        <!-- Сетка карточек услуг -->
+        <div class="services__grid">
+
+            <!-- Карточка 1: Индивидуальные тренировки -->
+            <article class="service-card">
+                <!-- Бейдж (категория) -->
+                <div class="service-card__badge">Тренинг</div>
+                <!-- Название услуги -->
+                <h3 class="service-card__title">Индивидуальные тренировки</h3>
+                <!-- Описание услуги -->
+                <p class="service-card__text">
+                    Персональные занятия по выездке и конкуру. 
+                    Разбор техники, работа над посадкой и управлением.
+                </p>
+                <!-- Теги (ключевые слова) -->
+                <ul class="service-card__tags">
+                    <li>Выездка</li>
+                    <li>Конкур</li>
+                    <li>Посадка</li>
+                </ul>
+            </article>
+
+            <!-- Карточка 2: Подготовка к стартам -->
+            <article class="service-card">
+                <div class="service-card__badge">Соревнования</div>
+                <h3 class="service-card__title">Подготовка к стартам</h3>
+                <p class="service-card__text">
+                    План подготовки к соревнованиям, тактика прохождения маршрутов,
+                    психологическая поддержка всадника.
+                </p>
+                <ul class="service-card__tags">
+                    <li>Маршруты</li>
+                    <li>Тактика</li>
+                    <li>Ментальная подготовка</li>
+                </ul>
+            </article>
+
+            <!-- Карточка 3: Работа с молодой лошадью -->
+            <article class="service-card">
+                <div class="service-card__badge">Молодые лошади</div>
+                <h3 class="service-card__title">Работа с молодой лошадью</h3>
+                <p class="service-card__text">
+                    Заездка, работа в руках, развитие баланса и доверия.
+                    Мягкие методики без принуждения.
+                </p>
+                <ul class="service-card__tags">
+                    <li>Заездка</li>
+                    <li>Доверие</li>
+                    <li>Баланс</li>
+                </ul>
+            </article>
+
+        </div>
+    </section>
+<!-- ============================================================
+     СЕКЦИЯ 3: МОИ ДОСТИЖЕНИЯ
+     ============================================================ -->
+<section class="achievements" id="achievements">
+    <div class="achievements__container">
+
+        <h2 class="achievements__title">Мои достижения</h2>
+        <p class="achievements__subtitle">
+            Результаты, которыми я горжусь, и опыт, который помогает мне
+            находить подход к каждому всаднику и каждой лошади
+        </p>
+
+        <div class="achievements__grid">
+
+            <!-- Карточка 1: 4 подготовленные лошади -->
+            <article class="achievement-card">
+                <div class="achievement-card__media">
+                    <img src="dost1.jpeg"
+                         alt="Достижение: 4 подготовленные лошади для соревнований"
+                         class="achievement-card__image">
+                </div>
+                <div class="achievement-card__body">
+                    <h3 class="achievement-card__title">
+                        4 подготовленные лошади для соревнований
+                    </h3>
+                    <p class="achievement-card__text">
+                        Подготовила четырёх лошадей к соревнованиям по выездке,
+                        конкуру и троеборью — от начальной работы до уверенных
+                        стартов на турнирах.
+                    </p>
+                    <a href="#contact" class="achievement-card__btn">Подробнее</a>
+                </div>
+            </article>
+
+            <!-- Карточка 2: 1 разряд по выездке -->
+            <article class="achievement-card">
+                <div class="achievement-card__media">
+                    <img src="dost2.jpeg"
+                         alt="Достижение: 1 разряд по выездке"
+                         class="achievement-card__image">
+                </div>
+                <div class="achievement-card__body">
+                    <h3 class="achievement-card__title">
+                        1 разряд по выездке
+                    </h3>
+                    <p class="achievement-card__text">
+                        Выполнила норматив первого разряда по выездке.
+                        Продолжаю совершенствовать технику и передаю опыт
+                        ученикам — от посадки до сложных элементов.
+                    </p>
+                    <a href="#contact" class="achievement-card__btn">Подробнее</a>
+                </div>
+            </article>
+
+            <!-- Карточка 3: 1 разряд по конкуру -->
+            <article class="achievement-card">
+                <div class="achievement-card__media">
+                    <img src="dost3.jpeg"
+                         alt="Достижение: 1 разряд по конкуру"
+                         class="achievement-card__image">
+                </div>
+                <div class="achievement-card__body">
+                    <h3 class="achievement-card__title">
+                        1 разряд по конкуру
+                    </h3>
+                    <p class="achievement-card__text">
+                        Имею первый разряд по конкуру. Работаю над тактикой
+                        прохождения маршрутов и помогаю всадникам готовиться
+                        к соревнованиям разного уровня.
+                    </p>
+                    <a href="#contact" class="achievement-card__btn">Подробнее</a>
+                </div>
+            </article>
+
+            <!-- Карточка 4: троеборье -->
+            <article class="achievement-card">
+                <div class="achievement-card__media">
+                    <img src="dost4.jpeg"
+                         alt="Достижение: троеборье"
+                         class="achievement-card__image">
+                </div>
+                <div class="achievement-card__body">
+                    <h3 class="achievement-card__title">
+                        Троеборье
+                    </h3>
+                    <p class="achievement-card__text">
+                        Опыт выступлений и подготовки в троеборье: выездка,
+                        кросс и конкур. Комплексная работа над выносливостью,
+                        балансом и доверием между всадником и лошадью.
+                    </p>
+                    <a href="#contact" class="achievement-card__btn">Подробнее</a>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+</body>
+</html>
